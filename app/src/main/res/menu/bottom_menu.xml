@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/productsFragment"
+        android:icon="@drawable/ic_shop"
+        android:iconTint="@color/secondaryDarkColor"
+        />
+    <item
+        android:id="@+id/salesFragment"
+        android:icon="@drawable/ic_tag"
+        android:iconTint="@color/secondaryDarkColor"/>
+    <item
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_cashiermachine"
+        android:iconTint="@color/secondaryDarkColor"/>
+    <item
+        android:id="@+id/userFragment"
+        android:icon="@drawable/ic_uuser"
+        android:iconTint="@color/secondaryDarkColor"/>
+</menu>

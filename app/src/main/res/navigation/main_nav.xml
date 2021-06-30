@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/productsFragment">
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.hm.capstone.main.fragments.ProductsFragment"
+        android:label="products_fragment"
+        tools:layout="@layout/products_fragment" >
+        <action
+            android:id="@+id/action_productsFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.hm.capstone.main.fragments.UserFragment"
+        android:label="user_fragment"
+        tools:layout="@layout/user_fragment" />
+    <fragment
+        android:id="@+id/salesFragment"
+        android:name="com.hm.capstone.main.fragments.SalesFragment"
+        android:label="sales_fragment"
+        tools:layout="@layout/sales_fragment" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.hm.capstone.main.fragments.CartFragment"
+        android:label="cart_fragment"
+        tools:layout="@layout/cart_fragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.hm.capstone.main.fragments.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/detail_fragment">
+        <argument
+            android:name="productObject"
+            app:argType="com.hm.capstone.entities.Products" />
+    </fragment>
+</navigation>

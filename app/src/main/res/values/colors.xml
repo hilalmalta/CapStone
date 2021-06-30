@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#28696f</color>
+    <color name="primaryLightColor">#59979d</color>
+    <color name="primaryDarkColor">#003e44</color>
+    <color name="secondaryColor">#bc7365</color>
+    <color name="secondaryLightColor">#f1a293</color>
+    <color name="secondaryDarkColor">#89463b</color>
+    <color name="primaryTextColor">#ffdc92</color>
+    <color name="secondaryTextColor">#ffdc92</color>
+    <color name="potBlack">#161616</color>
+    <color name="liquorice">#0a0502</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
