@@ -8,7 +8,7 @@ import com.hm.capstone.repo.ProductDaoRepository
 class ProductsViewModel : ViewModel() {
 
     var productList = MutableLiveData<List<Products>>()
-    val pDaoRepo = ProductDaoRepository()
+    private val pDaoRepo = ProductDaoRepository()
 
     init {
         getProduct()
@@ -21,6 +21,5 @@ class ProductsViewModel : ViewModel() {
     fun updateCart(id:Int, state:Int){
         pDaoRepo.updateCart(id, state)
     }
-
 
 }

@@ -12,14 +12,24 @@ class CartViewModel : ViewModel() {
 
     init {
         getProduct()
-        cartList = pDaoRepo.getProductList()
+        cartList = pDaoRepo.getCartProductList()
     }
 
     fun getProduct(){
-        pDaoRepo.getProduct("hilalmalta")
+        pDaoRepo.getCartProduct("hilalmalta")
     }
 
     fun updateCart(id:Int, state:Int){
         pDaoRepo.updateCart(id, state)
+    }
+
+    fun purchase(list: List<Products>){
+
+        for(i in list){
+            pDaoRepo.updateCart(i.product_id, 0)
+
+        }
+
+
     }
 }

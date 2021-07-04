@@ -20,9 +20,6 @@ class LoginFragment : Fragment() {
 
     private lateinit var view: LoginFragmentBinding
     private val viewModel: LoginViewModel by viewModels()
-    val uDaoRepo = UserDaoRepository()
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,15 +44,21 @@ class LoginFragment : Fragment() {
         view.loginButton.setOnClickListener {
 
             viewModel.login(view.userNameText.text.toString(), view.loginPassText.text.toString())
-            val userVal = viewModel.getVal()
-            println("kullanıcı değer" + userVal )
-            if (userVal == 1){
-                val i = Intent(requireContext(), MainActivity::class.java)
-                startActivity(i)
-            }
-            else{
-                Log.e("giris yap", "kullanıcı bulunamadı")
-            }
+            val myuser = viewModel.loggedUser
+            println("gelen user" + myuser)
+            //val userVal = myuser.value!!.user_val
+
+            val i = Intent(requireContext(), MainActivity::class.java)
+            startActivity(i)
+
+//            println("kullanıcı değer" + userVal )
+//            if (userVal == 1){
+//                val i = Intent(requireContext(), MainActivity::class.java)
+//                startActivity(i)
+//            }
+//            else{
+//                Log.e("giris yap", "kullanıcı bulunamadı")
+//            }
 
 
 
@@ -64,15 +67,5 @@ class LoginFragment : Fragment() {
 
         return view.root
     }
-
-//    fun login(mail: String, password:String){
-//
-//        Log.e("giris yap", "tıklandı")
-//
-//        println("kullanıcı değer" + userVal )
-//
-//
-//    }
-
 
 }

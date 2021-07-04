@@ -13,9 +13,15 @@ class UserDaoRepository {
     private val userList: MutableLiveData<List<Users>> = MutableLiveData()
     private val userVal: MutableLiveData<Int> = MutableLiveData()
     private val uDaoInterface: UserDaoInterface = ApiUtils.getUserDaoInterface()
+    private val loggedUser: MutableLiveData<Users> = MutableLiveData()
 
     fun getUserVal(): MutableLiveData<Int> {
         return userVal
+    }
+
+    fun getLoggedUser(): MutableLiveData<Users>{
+
+        return loggedUser
     }
 
     fun getUser(mail: String, password:String){
@@ -24,6 +30,9 @@ class UserDaoRepository {
                 Log.e("Başarı", response.body().users.toString())
                 val _userList = response.body().users
                 userList.value = _userList
+                val _loggedUser = response.body().users[0]
+                loggedUser.value = _loggedUser
+
                 val _userVal = response.body().users[0].user_val
                 userVal.value = _userVal
                 println("liste size: " + userList.value!!.size)

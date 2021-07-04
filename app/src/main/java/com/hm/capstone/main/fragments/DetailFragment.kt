@@ -11,13 +11,13 @@ import androidx.navigation.fragment.navArgs
 import com.hm.capstone.R
 import com.hm.capstone.databinding.DetailFragmentBinding
 import com.hm.capstone.main.MainActivity
-import com.hm.capstone.main.viewmodels.DetailViewModel
+import com.hm.capstone.main.viewmodels.ProductsViewModel
 import com.squareup.picasso.Picasso
 
 class DetailFragment : Fragment() {
 
     private lateinit var view: DetailFragmentBinding
-    private val viewModel: DetailViewModel by viewModels()
+    private val viewModel: ProductsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +40,12 @@ class DetailFragment : Fragment() {
         val url = b.productObject.product_image_url
         Picasso.get().load(url).into(view.productDetailImg)
 
+
+        view.detailAddButton.setOnClickListener {
+
+            viewModel.updateCart(b.productObject.product_id, 1)
+
+        }
 
 
         return view.root

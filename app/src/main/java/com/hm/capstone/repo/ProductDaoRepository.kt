@@ -14,11 +14,21 @@ import retrofit2.Response
 class ProductDaoRepository {
 
     private val productList: MutableLiveData<List<Products>> = MutableLiveData()
+    private val cartList: MutableLiveData<List<Products>> = MutableLiveData()
+    private val saleList: MutableLiveData<List<Products>> = MutableLiveData()
     private val pDaoInterface:ProductDaoInterface = ApiUtils.getProductDaoInterface()
 
 
     fun getProductList(): MutableLiveData<List<Products>> {
         return productList
+    }
+
+    fun getCartProductList(): MutableLiveData<List<Products>> {
+        return cartList
+    }
+
+    fun getSaleProductList(): MutableLiveData<List<Products>> {
+        return saleList
     }
 
 
@@ -61,6 +71,26 @@ class ProductDaoRepository {
         })
     }
 
+    fun getCartProduct(sellerName:String){
+        pDaoInterface.getProduct(sellerName).enqueue(object : Callback<ProductsResponse> {
+            override fun onResponse(call: Call<ProductsResponse>?, response: Response<ProductsResponse>) {
+                Log.e( "Mesaj", response.body().products.toString())
+                val p_list = response.body().products
+                val tempList = arrayListOf<Products>()
+
+                for(i in p_list){
+                    if (i.product_cart_state == 1){
+                        tempList.add(i)
+                    }
+                }
+                cartList.value = tempList
+            }
+            override fun onFailure(call: Call<ProductsResponse>?, t: Throwable?) {
+                Log.e("getProduct", t?.localizedMessage.toString())
+            }
+        })
+    }
+
 
 
     fun updateSale(id:Int, state:Int){
@@ -74,6 +104,27 @@ class ProductDaoRepository {
             }
         })
     }
+
+    fun getSaleProduct(sellerName:String){
+        pDaoInterface.getProduct(sellerName).enqueue(object : Callback<ProductsResponse> {
+            override fun onResponse(call: Call<ProductsResponse>?, response: Response<ProductsResponse>) {
+                Log.e( "Mesaj", response.body().products.toString())
+                val p_list = response.body().products
+                val tempList = arrayListOf<Products>()
+
+                for(i in p_list){
+                    if (i.product_sale_state == 1){
+                        tempList.add(i)
+                    }
+                }
+                saleList.value = tempList
+            }
+            override fun onFailure(call: Call<ProductsResponse>?, t: Throwable?) {
+                Log.e("getProduct", t?.localizedMessage.toString())
+            }
+        })
+    }
+
 
 
 }
