@@ -3,6 +3,7 @@ package com.hm.capstone.main.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.hm.capstone.databinding.CartCardBinding
 import com.hm.capstone.entities.Products
@@ -34,9 +35,8 @@ class CartAdapter (var mContext: Context, var cartList:List<Products>, var viewM
 
         holder.cardView.deleteIcon.setOnClickListener {
             viewModel.updateCart(product.product_id, 0)
+            Toast.makeText(mContext, "Ürün Sepeten Çıkarıldı!", Toast.LENGTH_SHORT).show()
         }
-
-
 
     }
 

@@ -27,6 +27,7 @@ class UserFragment : Fragment() {
         view = DataBindingUtil.inflate(inflater, R.layout.user_fragment, container, false)
         view.userFragment = this
 
+
         viewModel.loggedUser.observe(viewLifecycleOwner, {
             view.userObject = it
         })

@@ -9,10 +9,15 @@
     <data>
         <variable
             name="saleObject" type="com.hm.capstone.entities.Products" />
+
+        <variable
+            name="salelist"
+            type="java.util.ArrayList" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
+        android:id="@+id/saleCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -37,15 +42,16 @@
 
         <ImageView
             android:id="@+id/saleImg"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/ic_percenta"
+            android:backgroundTint="#D30F0F"
             android:elevation="10dp"
             app:layout_constraintEnd_toStartOf="@+id/textView6"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/saleNameText"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_percenta" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/saleOldPriceText"
@@ -72,6 +78,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="İndirim!!"
+            android:textColor="#D30F0F"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/saleImg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -82,7 +90,7 @@
             android:id="@+id/saleNewPriceText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:textColor="#D30F0F"
             app:layout_constraintBottom_toBottomOf="@+id/textView5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -94,6 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@{saleObject.product_name}"
+            android:textColor="#D30F0F"
             app:layout_constraintBottom_toBottomOf="@+id/saleImg"
             app:layout_constraintEnd_toStartOf="@+id/saleImg"
             app:layout_constraintHorizontal_bias="0.5"

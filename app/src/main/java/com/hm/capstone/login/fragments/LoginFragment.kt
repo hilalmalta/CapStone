@@ -6,14 +6,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.Navigation
 import com.hm.capstone.R
 import com.hm.capstone.databinding.LoginFragmentBinding
 import com.hm.capstone.login.viewmodels.LoginViewModel
 import com.hm.capstone.main.MainActivity
+import com.hm.capstone.main.adapters.CartAdapter
 import com.hm.capstone.repo.UserDaoRepository
 
 class LoginFragment : Fragment() {
@@ -42,27 +45,32 @@ class LoginFragment : Fragment() {
         }
 
         view.loginButton.setOnClickListener {
-
             viewModel.login(view.userNameText.text.toString(), view.loginPassText.text.toString())
-            val myuser = viewModel.loggedUser
-            println("gelen user" + myuser)
-            //val userVal = myuser.value!!.user_val
 
-            val i = Intent(requireContext(), MainActivity::class.java)
-            startActivity(i)
+            viewModel.loggedUser.observe(viewLifecycleOwner, {
 
-//            println("kullanıcı değer" + userVal )
-//            if (userVal == 1){
-//                val i = Intent(requireContext(), MainActivity::class.java)
-//                startActivity(i)
-//            }
-//            else{
-//                Log.e("giris yap", "kullanıcı bulunamadı")
-//            }
+                val myuser = it
+                println("gelen user" + myuser.toString())
+                val userVal = it.user_val
+
+                println("kullanıcı değer" + userVal )
+                if (userVal == 1){
+                    val i = Intent(requireContext(), MainActivity::class.java)
+                    startActivity(i)
+                }
+                else{
+                    Toast.makeText(requireContext(), "Kullanıcı Bulunamadı", Toast.LENGTH_SHORT).show()
+                }
+
+
+            })
+
 
 
 
         }
+
+
 
 
         return view.root

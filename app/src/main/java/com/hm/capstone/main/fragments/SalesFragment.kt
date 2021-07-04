@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.hm.capstone.R
 import com.hm.capstone.databinding.ProductsFragmentBinding
 import com.hm.capstone.databinding.SalesFragmentBinding
+import com.hm.capstone.entities.Products
 import com.hm.capstone.main.MainActivity
 import com.hm.capstone.main.adapters.CartAdapter
 import com.hm.capstone.main.adapters.ProductAdapter
@@ -20,6 +21,7 @@ class SalesFragment : Fragment() {
     private lateinit var view: SalesFragmentBinding
     private lateinit var adapter: SalesAdapter
     private val viewModel: SalesViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +34,11 @@ class SalesFragment : Fragment() {
         viewModel.saleList.observe(viewLifecycleOwner, {
             adapter= SalesAdapter(requireContext(),it, viewModel)
             view.adapter=adapter })
+
+
+
+
+
 
 
         (activity as MainActivity).supportActionBar?.title = ""

@@ -23,7 +23,11 @@
         android:id="@+id/salesFragment"
         android:name="com.hm.capstone.main.fragments.SalesFragment"
         android:label="sales_fragment"
-        tools:layout="@layout/sales_fragment" />
+        tools:layout="@layout/sales_fragment" >
+        <action
+            android:id="@+id/action_salesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.hm.capstone.main.fragments.CartFragment"

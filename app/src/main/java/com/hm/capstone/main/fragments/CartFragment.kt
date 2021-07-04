@@ -34,14 +34,9 @@ class CartFragment : Fragment() {
 
         })
 
-//        view.purchaseButton.setOnClickListener {
-//
-//            viewModel.cartList.value?.let { it1 -> viewModel.purchase(it1) }
-//
-//        }
-
-
-
+        view.purchaseButton.setOnClickListener {
+            viewModel.cartList.value?.let { it1 -> viewModel.purchase(it1) }
+        }
 
         (activity as MainActivity).supportActionBar?.title = ""
         ((activity as MainActivity)).getMyTextView().text = "Sepetim"

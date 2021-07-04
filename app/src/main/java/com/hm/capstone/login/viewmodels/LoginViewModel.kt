@@ -1,30 +1,31 @@
 package com.hm.capstone.login.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.hm.capstone.entities.Products
 import com.hm.capstone.entities.Users
-import com.hm.capstone.repo.ProductDaoRepository
 import com.hm.capstone.repo.UserDaoRepository
 
 class LoginViewModel : ViewModel() {
 
     val uDaoRepo = UserDaoRepository()
     var loggedUser = MutableLiveData<Users>()
+    var uVal = MutableLiveData<Int>()
 
     init {
-        login("hilalmalta@gmail.com", "123456")
         loggedUser = uDaoRepo.getLoggedUser()
+        uVal = uDaoRepo.getUserVal()
     }
 
 
-//    fun getVal(): Int? {
-//        val uVal = uDaoRepo.getUserVal()
-//        return uVal.value
-//    }
-//
+
+    fun getUUVal():MutableLiveData<Int>{
+        return uVal
+
+    }
+
+    fun getUser():MutableLiveData<Users>{
+        return loggedUser
+    }
 
     fun login(mail: String, password:String){
         uDaoRepo.getUser(mail, password)

@@ -48,6 +48,8 @@ class DetailFragment : Fragment() {
         }
 
 
+
+
         return view.root
     }
 

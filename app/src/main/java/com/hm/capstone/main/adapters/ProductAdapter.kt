@@ -3,6 +3,7 @@ package com.hm.capstone.main.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.hm.capstone.databinding.ProductCardBinding
@@ -37,6 +38,7 @@ class ProductAdapter (var mContext: Context, var productList:List<Products>, var
 
         holder.cardView.addToCartButton.setOnClickListener {
             viewModel.updateCart(product.product_id, 1)
+            Toast.makeText(mContext, "Sepete Eklendi!", Toast.LENGTH_SHORT).show()
         }
 
 
